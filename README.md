@@ -146,5 +146,41 @@ while True:
         break
     else:
         print("Bot: Sorry, I don't understand.")
+        import random
+
+words = ["apple", "mango", "grapes", "banana", "orange"]
+word = random.choice(words)
+
+guessed = []
+tries = 6
+
+print("Welcome to Hangman!")
+
+while tries > 0:
+    display = ""
+
+    for letter in word:
+        if letter in guessed:
+            display += letter + " "
+        else:
+            display += "_ "
+
+    print(display)
+
+    if "_" not in display:
+        print("Congratulations! You guessed the word:", word)
+        break
+
+    guess = input("Guess a letter: ").lower()
+
+    if guess in word:
+        guessed.append(guess)
+        print("Correct!")
+    else:
+        tries -= 1
+        print("Wrong! Tries left:", tries)
+
+if tries == 0:
+    print("Game Over! The word was:", word)
     return 0;
 }
