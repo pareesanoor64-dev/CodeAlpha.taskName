@@ -177,6 +177,61 @@ while tries > 0:
         guessed.append(guess)
         print("Correct!")
     else:
+    include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of courses: ";
+    cin >> n;
+
+    vector<string> grades(n);
+    vector<int> credits(n);
+    vector<double> gradePoints(n);
+
+    double totalGradePoints = 0;
+    int totalCredits = 0;
+
+    for (int i = 0; i < n; i++) {
+        cout << "\nCourse " << i + 1 << endl;
+
+        cout << "Enter Grade (A, B, C, D, F): ";
+        cin >> grades[i];
+
+        cout << "Enter Credit Hours: ";
+        cin >> credits[i];
+
+        if (grades[i] == "A")
+            gradePoints[i] = 4.0;
+        else if (grades[i] == "B")
+            gradePoints[i] = 3.0;
+        else if (grades[i] == "C")
+            gradePoints[i] = 2.0;
+        else if (grades[i] == "D")
+            gradePoints[i] = 1.0;
+        else
+            gradePoints[i] = 0.0;
+
+        totalGradePoints += gradePoints[i] * credits[i];
+        totalCredits += credits[i];
+    }
+
+    double cgpa = totalGradePoints / totalCredits;
+
+    cout << "\n===== RESULT =====\n";
+    for (int i = 0; i < n; i++) {
+        cout << "Course " << i + 1
+             << " Grade: " << grades[i]
+             << " Credit Hours: " << credits[i] << endl;
+    }
+
+    cout << fixed << setprecision(2);
+    cout << "\nCGPA = " << cgpa << endl;
+
+    return 0;
+}
         tries -= 1
         print("Wrong! Tries left:", tries)
 
