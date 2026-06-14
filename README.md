@@ -182,5 +182,29 @@ while tries > 0:
 
 if tries == 0:
     print("Game Over! The word was:", word)
+    stocks = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOG": 140,
+    "AMZN": 150
+}
+
+total = 0
+
+print("Stock Portfolio Tracker")
+
+for stock, price in stocks.items():
+    qty = int(input(f"Enter quantity of {stock}: "))
+    total += qty * price
+
+print("Total Investment Value: $", total)
+
+save = input("Save result to file? (yes/no): ")
+
+if save.lower() == "yes":
+    file = open("portfolio.txt", "w")
+    file.write("Total Investment Value: $" + str(total))
+    file.close()
+    print("Saved in portfolio.txt")
     return 0;
 }
